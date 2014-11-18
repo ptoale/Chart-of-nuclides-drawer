@@ -15,7 +15,7 @@ class ParameterError(Exception):
     """Error class for all kinds of wrong parameters passed to 
     all functions and classes in this module"""
     def __init__(self, msg):
-        super().__init__()
+        super(ParameterError, self).__init__()
         self.msg = msg
     def __str__(self):
         return repr(self.msg)
@@ -102,7 +102,7 @@ class Nuclide(object):
         """Constructor for base class. All fields are properites and
         sanity check is done therein."""
 
-        super().__init__()
+        super(Nuclide, self).__init__()
         self.Z = Z
         self.A = A
 
@@ -420,7 +420,7 @@ class NuclideNb03(Nuclide):
             else:
                 self.something = something
         """
-        super().__init__(Z, A)
+        super(NuclideNb03, self).__init__(Z, A)
         self.mass_defect = self._parse_mass_defect(mass_defect)
         self.half_life = self._parse_half_life(half_life)
         self.gs_spin = self._parse_gs_spin(gs_spin)
@@ -619,7 +619,7 @@ class NuclideNwc11(Nuclide):
     def __init__(self, Z, A, mass_defect, half_life, gs_spin,
                  decay_modes, comment = None):
         """ Constructor for Nuclear Wallet Cards 2011 version."""
-        super().__init__(Z, A, mass_defect, half_life=None, gs_spin=gs_spin,
+        super(NuclideNwc11, self).__init__(Z, A, mass_defect, half_life=None, gs_spin=gs_spin,
                          decay_modes=decay_modes, isomers=None, comment=comment)
         self.half_life = self.nwc_parse_half_life(half_life)
 
@@ -713,7 +713,7 @@ class NuclideXml(Nuclide):
         for xml_nuclide_entry in dom.getElementsByTagName("nuclide"):
             isotope = NuclideXml(A, Z, xml_nuclide_entry)
         """
-        super().__init__(Z, A)
+        super(NuclideXml, self).__init__(Z, A)
         if xml_nuclide_entry is not None:
             self.parse_xml_entry(xml_nuclide_entry)
 

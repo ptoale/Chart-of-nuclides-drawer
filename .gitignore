@@ -1,6 +1,8 @@
 # ignore these files
 *~
 *.swp
+*.pyc
+*.svg
 # Ignore this file (no licence information provided)
 nubtab03.asc
 nwc11.txt
